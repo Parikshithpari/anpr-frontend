@@ -1,8 +1,3 @@
-/* ============================================================
-   RegistrationFailed.css — PTag terracotta theme
-   Scoped to .regfailed-* only.
-   ============================================================ */
-
 .regfailed-wrapper {
   min-height: 100vh;
   display: flex;
