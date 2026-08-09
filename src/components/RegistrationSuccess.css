@@ -1,15 +1,3 @@
-/* ============================================================
-   RegistrationSuccess.css — PTag terracotta theme
-   Scoped to .regsuccess-* only. Zero bleed into other pages.
-
-   PTag palette:
-     Deep wine:     #5C1F1F
-     Primary red:   #8B3A3A
-     Mid red:       #A04848
-     Dusty rose:    #C47070
-     Blush cream:   #F5EDEA
-   ============================================================ */
-
 /* ---------- Page wrapper ----------------------------------- */
 .regsuccess-wrapper {
   min-height: 100vh;
