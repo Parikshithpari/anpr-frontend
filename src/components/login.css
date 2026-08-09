@@ -1,16 +1,3 @@
-/* ============================================================
-   login.css — PTag terracotta theme
-   Scoped to .adminlog-* only. Zero bleed into other pages.
-
-   PTag palette extracted from logo:
-     Deep wine:     #5C1F1F
-     Primary red:   #8B3A3A  (terracotta)
-     Mid red:       #A04848
-     Dusty rose:    #C47070
-     Blush cream:   #F5EDEA
-     Particle:      rgba(139, 58, 58, ...)
-   ============================================================ */
-
 /* ---------- Page wrapper ----------------------------------- */
 .adminlog-wrapper {
   min-height: 100vh;
