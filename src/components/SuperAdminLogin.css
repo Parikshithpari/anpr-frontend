@@ -1,9 +1,3 @@
-/* ============================================================
-   SuperAdminLogin.css — scoped to .salog-* only
-   Zero bleed into other pages.
-   Theme: PTag terracotta / burgundy (#8b3a3a, #a05050, #f5eeee)
-   ============================================================ */
-
 /* ---------- Page wrapper ----------------------------------- */
 .salog-wrapper {
   min-height: 100vh;
