@@ -1,0 +1,450 @@
+/* ============================================================
+   UserRegistration.css — scoped to .userreg-* only
+   Zero bleed into other pages.
+   Theme: PTag terracotta / burgundy (#8b3a3a, #a05050, #f5eeee)
+   ============================================================ */
+
+/* ---------- Page wrapper ----------------------------------- */
+.userreg-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 20% 55%, rgba(139, 58, 58, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 82% 20%, rgba(160, 80, 80, 0.20) 0%, transparent 48%),
+    radial-gradient(ellipse at 75% 85%, rgba(120, 50, 50, 0.16) 0%, transparent 44%),
+    linear-gradient(145deg, #f0e4e4 0%, #f5ecec 45%, #e8d8d8 100%);
+  background-color: #eddada;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ---------- Minimal Navbar --------------------------------- */
+.userreg-navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 68px;
+  background: rgba(255, 250, 250, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(200, 150, 150, 0.28);
+}
+
+.userreg-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* SVG logo used directly — no hex icon */
+
+.userreg-nav-logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.userreg-nav-logo-text span:first-child { color: #8b3a3a; font-weight: 900; }
+.userreg-nav-logo-text span:last-child  { color: #5a2020; font-weight: 500; }
+
+/* ---------- Main body -------------------------------------- */
+.userreg-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ---------- Two-panel card --------------------------------- */
+.userreg-card {
+  display: flex;
+  width: 900px;
+  max-width: 95vw;
+  min-height: 460px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 28px 70px rgba(100, 30, 30, 0.20),
+    0 2px 0 rgba(255, 235, 235, 0.55) inset;
+}
+
+/* ---------- LEFT panel: deep dark red ---------------------- */
+.userreg-left {
+  flex: 1;
+  background:
+    radial-gradient(ellipse at 60% 90%, rgba(139, 58, 58, 0.25) 0%, transparent 55%),
+    linear-gradient(160deg, #2a0e0e 0%, #3a1414 60%, #2e1010 100%);
+  padding: 56px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative terracotta glow at bottom */
+.userreg-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(139, 58, 58, 0.28) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.userreg-left h2 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.08;
+  color: #ffffff;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.20);
+  position: relative;
+  z-index: 1;
+}
+
+.userreg-left p {
+  font-size: 16px;
+  color: rgba(255, 210, 210, 0.70);
+  margin: 0;
+  line-height: 1.55;
+  max-width: 280px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- RIGHT panel: warm off-white form area ---------- */
+.userreg-right {
+  flex: 1.1;
+  background: #fdf6f6;
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Input wrapper */
+.userreg-field {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.userreg-field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #8b3a3a;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* All inputs */
+.userreg-right input[type="text"],
+.userreg-right input[type="email"],
+.userreg-right input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px 14px 42px;
+  border: 1.5px solid #e8d0d0;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 14px;
+  color: #2a0a0a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.userreg-right input::placeholder {
+  color: #c09090;
+}
+
+.userreg-right input:focus {
+  border-color: #8b3a3a;
+  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.13);
+}
+
+/* Error text */
+.userreg-error {
+  color: #c0392b;
+  font-size: 12px;
+  margin: 4px 0 8px;
+}
+
+/* Register button — terracotta gradient pill */
+.userreg-right button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  font-family: inherit;
+  background: linear-gradient(90deg, #e07070 0%, #b05252 28%, #2a0e0e 65%, #2a0e0e 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(139, 58, 58, 0.32);
+  transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.userreg-right button[type="submit"]:hover {
+  opacity: 0.92;
+  box-shadow: 0 6px 24px rgba(139, 58, 58, 0.45);
+}
+
+.userreg-right button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Login redirect */
+.userreg-login-text {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #9a7070;
+}
+
+.userreg-login-link {
+  color: #8b3a3a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.userreg-login-link:hover { color: #5a2020; }
+
+/* ---------- Responsive ------------------------------------ */
+@media (max-width: 700px) {
+  .userreg-card {
+    flex-direction: column;
+    border-radius: 14px;
+  }
+
+  .userreg-left {
+    padding: 36px 28px;
+  }
+
+  .userreg-left h2 { font-size: 30px; }
+
+  .userreg-right {
+    padding: 32px 24px;
+  }
+
+  .userreg-navbar { padding: 0 20px; }
+}
+
+.userreg-nav-logo-img {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+}
+
+/* ── Left panel info items ── */
+.userreg-left-info {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.userreg-left-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255, 210, 210, 0.80);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Number input same style as text inputs */
+.userreg-right input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px 14px 42px;
+  border: 1.5px solid #e8d0d0;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 14px;
+  color: #2a0a0a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  -moz-appearance: textfield;
+}
+
+.userreg-right input[type="number"]::-webkit-outer-spin-button,
+.userreg-right input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.userreg-right input[type="number"]:focus {
+  border-color: #8b3a3a;
+  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.13);
+}
+
+/* Disabled button state */
+.userreg-right button[type="submit"]:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ── Step indicator on left panel ── */
+.userreg-steps {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.userreg-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0.45;
+  transition: opacity 0.3s;
+}
+
+.userreg-step--active,
+.userreg-step--done {
+  opacity: 1;
+}
+
+.userreg-step-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 200, 200, 0.40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 210, 210, 0.60);
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.userreg-step--active .userreg-step-dot {
+  border-color: #e07070;
+  background: #e07070;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(224, 112, 112, 0.45);
+}
+
+.userreg-step--done .userreg-step-dot {
+  border-color: #27ae60;
+  background: #27ae60;
+  color: #ffffff;
+}
+
+.userreg-step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userreg-step-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 200, 200, 0.50);
+}
+
+.userreg-step--active .userreg-step-label,
+.userreg-step--done .userreg-step-label {
+  color: rgba(255, 210, 210, 0.75);
+}
+
+.userreg-step-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 220, 220, 0.70);
+}
+
+.userreg-step--active .userreg-step-name {
+  color: #ffffff;
+}
+
+.userreg-step-line {
+  width: 2px;
+  height: 24px;
+  background: rgba(255, 200, 200, 0.18);
+  margin-left: 16px;
+  border-radius: 2px;
+}
+
+/* ── Form title & subtitle in right panel ── */
+.userreg-form-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #5C1F1F;
+  margin: 0 0 6px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.userreg-form-subtitle {
+  font-size: 13px;
+  color: #9a6060;
+  margin: 0 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
+
+/* ── Continue (Next) button ── */
+.userreg-next-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  font-family: inherit;
+  background: linear-gradient(90deg, #e07070 0%, #b05252 28%, #2a0e0e 65%, #2a0e0e 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(139, 58, 58, 0.32);
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.userreg-next-btn:hover  { opacity: 0.92; }
+.userreg-next-btn:active { transform: scale(0.98); }
+
+/* ── Back button ── */
+.userreg-back-btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border: 1.5px solid rgba(139, 58, 58, 0.30);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  font-family: inherit;
+  background: transparent;
+  color: #8B3A3A;
+  transition: background 0.2s, color 0.2s;
+}
+
+.userreg-back-btn:hover {
+  background: rgba(139, 58, 58, 0.08);
+}
+
+/* ── Left panel highlight on h2 ── */
+.userreg-left h2 span {
+  color: #e07070;
+}

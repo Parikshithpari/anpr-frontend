@@ -1,0 +1,275 @@
+/* ============================================================
+   login.css — PTag terracotta theme
+   Scoped to .adminlog-* only. Zero bleed into other pages.
+
+   PTag palette extracted from logo:
+     Deep wine:     #5C1F1F
+     Primary red:   #8B3A3A  (terracotta)
+     Mid red:       #A04848
+     Dusty rose:    #C47070
+     Blush cream:   #F5EDEA
+     Particle:      rgba(139, 58, 58, ...)
+   ============================================================ */
+
+/* ---------- Page wrapper ----------------------------------- */
+.adminlog-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  background:
+    radial-gradient(ellipse at 78% 50%, rgba(139, 58, 58, 0.20) 0%, transparent 52%),
+    radial-gradient(ellipse at 88% 25%, rgba(160, 72, 72, 0.14) 0%, transparent 40%),
+    radial-gradient(ellipse at 15% 60%, rgba(139, 58, 58, 0.10) 0%, transparent 45%),
+    linear-gradient(150deg, #f0e6e2 0%, #f5edea 45%, #e8d8d4 100%);
+  background-color: #ede0dc;
+}
+
+/* ---------- Background canvas (particle network) ---------- */
+.adminlog-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Navbar ----------------------------------------- */
+.adminlog-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 68px;
+  position: relative;
+  z-index: 10;
+  background: transparent;
+}
+
+.adminlog-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* SVG logo wrapper */
+.adminlog-nav-logo-svg {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+}
+
+.adminlog-nav-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.adminlog-nav-logo-text .ptag-bold { color: #5C1F1F; font-weight: 800; }
+.adminlog-nav-logo-text .ptag-thin { color: #8B3A3A; font-weight: 400; }
+
+.adminlog-nav-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  text-shadow: 0 1px 8px rgba(139, 58, 58, 0.18);
+}
+
+/* ---------- Body ------------------------------------------ */
+.adminlog-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+/* ---------- Frosted glass card ---------------------------- */
+.adminlog-card {
+  width: 420px;
+  max-width: 95vw;
+  padding: 52px 48px 44px;
+  border-radius: 20px;
+  position: relative;
+
+  background: rgba(250, 244, 242, 0.76);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(196, 112, 112, 0.28);
+  box-shadow:
+    0 24px 64px rgba(92, 31, 31, 0.16),
+    0 2px 0 rgba(255, 235, 230, 0.70) inset;
+
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  animation: adminlog-card-in 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) 0.1s forwards;
+}
+
+@keyframes adminlog-card-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Card heading ---------------------------------- */
+.adminlog-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #5C1F1F;
+  text-align: center;
+  margin: 0 0 36px;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  animation: adminlog-fade-up 0.4s ease 0.45s forwards;
+}
+
+/* ---------- Field group ----------------------------------- */
+.adminlog-field {
+  margin-bottom: 18px;
+  opacity: 0;
+}
+
+.adminlog-field:nth-child(1) { animation: adminlog-fade-up 0.4s ease 0.50s forwards; }
+.adminlog-field:nth-child(2) { animation: adminlog-fade-up 0.4s ease 0.60s forwards; }
+
+.adminlog-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7a3535;
+  letter-spacing: 0.04em;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+
+/* Input wrapper */
+.adminlog-input-wrap {
+  position: relative;
+}
+
+.adminlog-input-wrap input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 44px 13px 16px;
+  border: 1.5px solid rgba(139, 58, 58, 0.28);
+  border-radius: 10px;
+  background: rgba(255, 250, 249, 0.85);
+  font-size: 14px;
+  color: #2a1010;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.adminlog-input-wrap input::placeholder {
+  color: #c09090;
+}
+
+.adminlog-input-wrap input:focus {
+  border-color: #8B3A3A;
+  background: #fff8f7;
+  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.14);
+}
+
+.adminlog-input-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #8B3A3A;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ---------- Error ----------------------------------------- */
+.adminlog-error {
+  font-size: 12px;
+  color: #c0392b;
+  margin: -8px 0 14px;
+  padding-left: 2px;
+  font-weight: 500;
+  animation: adminlog-fade-up 0.3s ease forwards;
+}
+
+/* ---------- LOGIN button: terracotta pill ----------------- */
+.adminlog-btn-login {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #5C1F1F 0%, #8B3A3A 45%, #A04848 100%);
+  color: #fff5f3;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow:
+    0 6px 22px rgba(92, 31, 31, 0.38),
+    0 1px 0 rgba(196, 112, 112, 0.40) inset;
+  transition: opacity 0.2s, transform 0.12s, box-shadow 0.2s;
+  margin-top: 8px;
+
+  opacity: 0;
+  animation: adminlog-fade-up 0.4s ease 0.72s forwards;
+}
+
+.adminlog-btn-login:hover {
+  opacity: 0.88;
+  box-shadow: 0 10px 28px rgba(92, 31, 31, 0.45);
+  transform: translateY(-1px);
+}
+
+.adminlog-btn-login:active { transform: scale(0.97); }
+
+/* ---------- RESET link ------------------------------------ */
+.adminlog-btn-reset {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7a3535;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+
+  opacity: 0;
+  animation: adminlog-fade-up 0.4s ease 0.82s forwards;
+}
+
+.adminlog-btn-reset:hover { color: #8B3A3A; }
+
+/* ---------- Shared keyframe ------------------------------- */
+@keyframes adminlog-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ---------- Responsive ------------------------------------ */
+@media (max-width: 500px) {
+  .adminlog-navbar    { padding: 0 20px; }
+  .adminlog-nav-title { font-size: 11px; letter-spacing: 0.10em; }
+  .adminlog-card      { padding: 40px 28px 36px; }
+  .adminlog-title     { font-size: 22px; }
+}
+
+.adminlog-nav-logo-img {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+}

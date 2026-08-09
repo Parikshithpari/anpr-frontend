@@ -1,0 +1,804 @@
+/* ============================================================
+   dashboard.css — PTag terracotta theme
+   Scoped to .admindash-* only. Zero bleed into other pages.
+
+   PTag palette:
+     Deep wine:     #5C1F1F
+     Primary red:   #8B3A3A  (terracotta)
+     Mid red:       #A04848
+     Dusty rose:    #C47070
+     Blush cream:   #F5EDEA / #f0e6e2
+   ============================================================ */
+
+/* ---------- Page wrapper ----------------------------------- */
+.admindash-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  background:
+    radial-gradient(ellipse at 78% 50%, rgba(139, 58, 58, 0.20) 0%, transparent 52%),
+    radial-gradient(ellipse at 88% 25%, rgba(160, 72, 72, 0.14) 0%, transparent 40%),
+    radial-gradient(ellipse at 15% 60%, rgba(139, 58, 58, 0.10) 0%, transparent 45%),
+    linear-gradient(150deg, #f0e6e2 0%, #f5edea 45%, #e8d8d4 100%);
+  background-color: #ede0dc;
+}
+
+/* ---------- Navbar ----------------------------------------- */
+.admindash-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 68px;
+  background: rgba(250, 244, 242, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196, 112, 112, 0.20);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admindash-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* SVG logo wrapper */
+.admindash-nav-logo-svg {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.admindash-nav-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.admindash-nav-logo-text .ptag-bold { color: #5C1F1F; font-weight: 800; }
+.admindash-nav-logo-text .ptag-thin { color: #8B3A3A; font-weight: 400; }
+
+.admindash-nav-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  text-shadow: 0 1px 8px rgba(139, 58, 58, 0.18);
+}
+
+/* ---------- Main body ------------------------------------- */
+.admindash-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 52px;
+  gap: 20px;
+}
+
+/* ---------- Live alert bar -------------------------------- */
+.admindash-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 1100px;
+  padding: 13px 20px;
+  border-radius: 12px;
+  background: rgba(250, 244, 242, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(139, 58, 58, 0.30);
+  box-shadow: 0 4px 18px rgba(92, 31, 31, 0.12);
+  font-size: 13px;
+  font-weight: 600;
+  color: #5C1F1F;
+  letter-spacing: 0.03em;
+  animation: admindash-fade-up 0.35s ease forwards;
+}
+
+.admindash-alert-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #8B3A3A;
+  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.22);
+  animation: admindash-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes admindash-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.22); }
+  50%       { box-shadow: 0 0 0 7px rgba(139, 58, 58, 0.06); }
+}
+
+/* ---------- Frosted glass card ---------------------------- */
+.admindash-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px 40px 36px;
+  border-radius: 20px;
+
+  background: rgba(250, 244, 242, 0.76);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(196, 112, 112, 0.28);
+  box-shadow:
+    0 24px 64px rgba(92, 31, 31, 0.16),
+    0 2px 0 rgba(255, 235, 230, 0.70) inset;
+
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  animation: admindash-card-in 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) 0.1s forwards;
+}
+
+@keyframes admindash-card-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Card title ------------------------------------ */
+.admindash-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #5C1F1F;
+  margin: 0 0 28px;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  animation: admindash-fade-up 0.4s ease 0.45s forwards;
+}
+
+/* ---------- Table scroll wrapper -------------------------- */
+.admindash-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  /* Terracotta custom scrollbar */
+}
+
+.admindash-table-scroll::-webkit-scrollbar       { height: 5px; }
+.admindash-table-scroll::-webkit-scrollbar-track  { background: transparent; }
+.admindash-table-scroll::-webkit-scrollbar-thumb  {
+  background: rgba(139, 58, 58, 0.30);
+  border-radius: 10px;
+}
+
+/* ---------- Table ----------------------------------------- */
+.admindash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+/* Sticky dark header */
+.admindash-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.admindash-table thead tr {
+  background: #5C1F1F;
+}
+
+.admindash-table th {
+  padding: 13px 18px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255, 220, 210, 0.90);
+  white-space: nowrap;
+}
+
+.admindash-table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid rgba(139, 58, 58, 0.10);
+  color: #2a1010;
+  white-space: nowrap;
+}
+
+.admindash-row {
+  transition: background 0.15s;
+}
+
+.admindash-row:hover {
+  background: rgba(139, 58, 58, 0.06);
+}
+
+.admindash-row:last-child td {
+  border-bottom: none;
+}
+
+/* New entry flash */
+.admindash-row-new {
+  animation: admindash-row-flash 2s ease forwards;
+}
+
+@keyframes admindash-row-flash {
+  0%   { background: rgba(139, 58, 58, 0.18); }
+  100% { background: transparent; }
+}
+
+/* ---------- Plate number cell ----------------------------- */
+.admindash-plate {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #5C1F1F;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ---------- Price cell ------------------------------------ */
+.admindash-price {
+  font-weight: 600;
+  color: #5C1F1F;
+}
+
+/* ---------- Status badge ---------------------------------- */
+.admindash-badge {
+  display: inline-block;
+  padding: 4px 13px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Inside — deep wine dark bg with rose text (like the green badge but red) */
+.admindash-badge--in {
+  background: #3a1010;
+  color: #f4a8a8;
+  box-shadow: 0 0 8px rgba(244, 168, 168, 0.15);
+}
+
+/* Exited — lighter muted rose */
+.admindash-badge--out {
+  background: rgba(139, 58, 58, 0.14);
+  color: #8B3A3A;
+  border: 1px solid rgba(139, 58, 58, 0.28);
+}
+
+/* ---------- Empty state ----------------------------------- */
+.admindash-empty {
+  text-align: center;
+  padding: 48px !important;
+  color: #c09090;
+  font-style: italic;
+  font-size: 13px;
+}
+
+/* ---------- Shared keyframes ------------------------------ */
+@keyframes admindash-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ---------- Responsive ------------------------------------ */
+@media (max-width: 768px) {
+  .admindash-navbar    { padding: 0 20px; }
+  .admindash-nav-title { font-size: 11px; letter-spacing: 0.10em; }
+  .admindash-card      { padding: 28px 16px 24px; }
+  .admindash-title     { font-size: 18px; }
+  .admindash-table th,
+  .admindash-table td  { padding: 10px 12px; }
+}
+
+.admindash-nav-logo-img {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+}
+
+/* ---------- Price Setting Card ---------------------------- */
+.admindash-price-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 24px 32px;
+  border-radius: 16px;
+  background: rgba(250, 244, 242, 0.76);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(196, 112, 112, 0.28);
+  box-shadow: 0 8px 24px rgba(92, 31, 31, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.admindash-price-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admindash-price-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9a6060;
+  margin: 0;
+}
+
+.admindash-price-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #5C1F1F;
+  margin: 0;
+  line-height: 1;
+}
+
+.admindash-price-unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: #9a6060;
+}
+
+.admindash-price-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admindash-price-input {
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(139, 58, 58, 0.25);
+  background: #ffffff;
+  font-size: 14px;
+  color: #2a1010;
+  outline: none;
+  width: 200px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admindash-price-input:focus {
+  border-color: #8B3A3A;
+  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.14);
+}
+
+.admindash-price-btn {
+  padding: 11px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #5C1F1F, #8B3A3A);
+  color: #fff5f3;
+  box-shadow: 0 4px 14px rgba(92, 31, 31, 0.28);
+  font-family: inherit;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.admindash-price-btn:hover  { opacity: 0.88; }
+.admindash-price-btn:active { transform: scale(0.97); }
+
+.admindash-price-msg {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .admindash-price-card {
+    padding: 20px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admindash-price-input {
+    width: 100%;
+  }
+
+  .admindash-price-btn {
+    width: 100%;
+  }
+}
+
+/* ── Branch selector in navbar ── */
+.admindash-branch-select {
+  padding: 8px 32px 8px 14px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(139, 58, 58, 0.30);
+  background: rgba(250, 244, 242, 0.90);
+  color: #5C1F1F;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B3A3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admindash-branch-select:focus {
+  border-color: #8B3A3A;
+  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.14);
+}
+
+/* ── Branch tag (single branch) ── */
+.admindash-branch-tag {
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: rgba(92, 31, 31, 0.10);
+  border: 1px solid rgba(139, 58, 58, 0.22);
+  color: #5C1F1F;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admindash-branch-select {
+  padding: 8px 32px 8px 14px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(139, 58, 58, 0.30);
+  background: rgba(250, 244, 242, 0.90);
+  color: #5C1F1F;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B3A3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.admindash-branch-tag {
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: rgba(92, 31, 31, 0.10);
+  border: 1px solid rgba(139, 58, 58, 0.22);
+  color: #5C1F1F;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Special price row ── */
+.admindash-special-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(139, 58, 58, 0.20);
+}
+
+.admindash-special-btn {
+  background: linear-gradient(135deg, #8B3A3A, #C47070) !important;
+}
+
+.admindash-special-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 5px 14px;
+  border-radius: 50px;
+  background: rgba(139, 58, 58, 0.12);
+  border: 1px solid rgba(139, 58, 58, 0.28);
+  color: #5C1F1F;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admindash-clear-btn {
+  background: none;
+  border: none;
+  color: #8B3A3A;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50px;
+  transition: background 0.15s;
+}
+
+.admindash-clear-btn:hover {
+  background: rgba(139, 58, 58, 0.12);
+}
+
+.admindash-date-input {
+  width: 160px !important;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .admindash-special-row {
+    flex-direction: column;
+  }
+  .admindash-date-input {
+    width: 100% !important;
+  }
+}
+
+/* ── Navbar right group (branch selector + logout) ── */
+.admindash-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Logout button ── */
+.admindash-logout-btn {
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(139, 58, 58, 0.35);
+  background: transparent;
+  color: #5C1F1F;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.admindash-logout-btn:hover {
+  background: linear-gradient(135deg, #5C1F1F, #8B3A3A);
+  color: #fff5f3;
+  border-color: transparent;
+}
+
+.admindash-logout-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Total row at bottom of table ── */
+.admindash-total-row {
+  background: linear-gradient(135deg, #bd7d7d, #8B3A3A);
+  position: sticky;
+  bottom: 0;
+}
+
+.admindash-total-row td {
+  border-bottom: none !important;
+  padding: 14px 18px;
+}
+
+.admindash-total-label {
+  color: rgba(255, 220, 210, 0.85);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.admindash-total-amount {
+  color: #fff5f3 !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .admindash-nav-right {
+    gap: 8px;
+  }
+  .admindash-logout-btn {
+    padding: 7px 14px;
+    font-size: 11px;
+  }
+}
+
+/* ── Floating round menu button ───────────────────── */
+.admindash-nav-right {
+  position: relative;
+}
+
+.admindash-menu-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(139, 58, 58, 0.28);
+
+  background: rgba(250, 244, 242, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  color: #5C1F1F;
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 4px 16px rgba(92, 31, 31, 0.12);
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease;
+}
+
+.admindash-menu-btn:hover {
+  background: rgba(255,255,255,0.95);
+  transform: scale(1.04);
+}
+
+.admindash-menu-btn:active {
+  transform: scale(0.96);
+}
+
+/* ── Dropdown panel ───────────────────── */
+.admindash-menu-dropdown {
+  position: absolute;
+  top: 56px;
+  right: 0;
+
+  min-width: 220px;
+
+  padding: 16px;
+  border-radius: 18px;
+
+  background: rgba(250, 244, 242, 0.94);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(196, 112, 112, 0.22);
+
+  box-shadow:
+    0 18px 40px rgba(92, 31, 31, 0.18);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  animation: admindash-menu-in 0.18s ease;
+  z-index: 999;
+}
+
+@keyframes admindash-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Make dropdown buttons full width */
+.admindash-menu-dropdown .admindash-logout-btn,
+.admindash-menu-dropdown .admindash-branch-select,
+.admindash-menu-dropdown .admindash-branch-tag {
+  width: 100%;
+}
+
+/* ── Date Filter Card ── */
+.admindash-filter-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 20px 32px;
+  border-radius: 16px;
+  background: rgba(250, 244, 242, 0.76);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(196, 112, 112, 0.28);
+  box-shadow: 0 8px 24px rgba(92, 31, 31, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.admindash-filter-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admindash-filter-heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9a6060;
+  margin: 0;
+}
+
+.admindash-filter-fields {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admindash-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admindash-filter-field label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #9a6060;
+}
+
+/* ── Reset button ── */
+.admindash-reset-btn {
+  padding: 11px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(139, 58, 58, 0.30);
+  background: transparent;
+  color: #8B3A3A;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.admindash-reset-btn:hover {
+  background: rgba(139, 58, 58, 0.08);
+}
+
+/* ── Filter result summary ── */
+.admindash-filter-result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.admindash-filter-count {
+  font-size: 22px;
+  font-weight: 800;
+  color: #5C1F1F;
+}
+
+.admindash-filter-range {
+  font-size: 12px;
+  color: #9a6060;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .admindash-filter-card {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .admindash-filter-result {
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,349 @@
+/* ============================================================
+   RegistrationSuccess.css — PTag terracotta theme
+   Scoped to .regsuccess-* only. Zero bleed into other pages.
+
+   PTag palette:
+     Deep wine:     #5C1F1F
+     Primary red:   #8B3A3A
+     Mid red:       #A04848
+     Dusty rose:    #C47070
+     Blush cream:   #F5EDEA
+   ============================================================ */
+
+/* ---------- Page wrapper ----------------------------------- */
+.regsuccess-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Georgia', 'Times New Roman', serif;
+
+  background:
+    radial-gradient(ellipse at 60% 50%, rgba(139, 58, 58, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 70%, rgba(160, 72, 72, 0.18) 0%, transparent 48%),
+    radial-gradient(ellipse at 85% 25%, rgba(196, 112, 112, 0.20) 0%, transparent 45%),
+    linear-gradient(150deg, #f0e6e2 0%, #f5edea 40%, #e8d8d4 100%);
+  background-color: #ede0dc;
+}
+
+/* ---------- Particle canvas ------------------------------- */
+.regsuccess-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Navbar ----------------------------------------- */
+.regsuccess-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 68px;
+  position: relative;
+  z-index: 10;
+  background: transparent;
+}
+
+.regsuccess-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.regsuccess-nav-logo-svg {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.regsuccess-nav-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.regsuccess-nav-logo-text .ptag-bold { color: #5C1F1F; font-weight: 800; }
+.regsuccess-nav-logo-text .ptag-thin { color: #8B3A3A; font-weight: 400; }
+
+.regsuccess-nav-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3a1818;
+}
+
+.regsuccess-nav-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8B3A3A, #C47070);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff5f3;
+  border: 2px solid rgba(139, 58, 58, 0.40);
+}
+
+.regsuccess-nav-chevron {
+  font-size: 11px;
+  color: #8B3A3A;
+  font-family: sans-serif;
+}
+
+/* ---------- Body / center ---------------------------------- */
+.regsuccess-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- The terracotta glass card ---------------------- */
+.regsuccess-card {
+  width: 560px;
+  max-width: 92vw;
+  padding: 60px 52px 52px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Frosted terracotta glass */
+  background: linear-gradient(145deg,
+    rgba(220, 170, 160, 0.72) 0%,
+    rgba(205, 145, 135, 0.62) 40%,
+    rgba(180, 115, 105, 0.52) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 210, 200, 0.50);
+  box-shadow:
+    0 30px 80px rgba(92, 31, 31, 0.28),
+    0 2px 0 rgba(255, 220, 210, 0.55) inset,
+    0 -1px 0 rgba(139, 58, 58, 0.18) inset;
+
+  opacity: 0;
+  transform: scale(0.82) translateY(30px);
+  animation: regsuccess-card-in 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+}
+
+@keyframes regsuccess-card-in {
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Bokeh glow blobs inside the card */
+.regsuccess-card::before {
+  content: '';
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 200, 185, 0.55) 0%, transparent 70%);
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  animation: regsuccess-pulse-before 3s ease-in-out infinite alternate;
+}
+
+.regsuccess-card::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 58, 58, 0.30) 0%, transparent 70%);
+  bottom: -40px;
+  right: 20px;
+  pointer-events: none;
+  animation: regsuccess-pulse-after 4s ease-in-out 1s infinite alternate;
+}
+
+@keyframes regsuccess-pulse-before {
+  from { transform: translateX(-50%) scale(1);    opacity: 0.7; }
+  to   { transform: translateX(-50%) scale(1.15); opacity: 1;   }
+}
+
+@keyframes regsuccess-pulse-after {
+  from { transform: scale(1);    opacity: 0.6; }
+  to   { transform: scale(1.15); opacity: 1;   }
+}
+
+/* ---------- STATUS label ----------------------------------- */
+.regsuccess-status {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3a1010;
+  margin: 0 0 20px;
+  opacity: 0;
+  animation: regsuccess-fade-up 0.5s ease 0.55s forwards;
+}
+
+/* ---------- Checkmark burst -------------------------------- */
+.regsuccess-check-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  opacity: 0;
+  animation: regsuccess-check-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s forwards;
+}
+
+/* Ripple rings — terracotta */
+.regsuccess-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 58, 58, 0.45);
+  animation: regsuccess-ripple-out 1.8s ease-out 1.2s infinite;
+}
+
+.regsuccess-ripple:nth-child(2) {
+  animation-delay: 1.6s;
+}
+
+@keyframes regsuccess-ripple-out {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0;   }
+}
+
+/* Checkmark circle — deep wine gradient */
+.regsuccess-check-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5C1F1F, #8B3A3A, #A04848);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 8px 24px rgba(92, 31, 31, 0.45),
+    0 0 0 5px rgba(139, 58, 58, 0.18);
+  position: relative;
+  z-index: 1;
+}
+
+.regsuccess-checkmark {
+  width: 36px;
+  height: 36px;
+  stroke: #fff5f3;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: regsuccess-draw-check 0.5s ease 1.25s forwards;
+}
+
+@keyframes regsuccess-draw-check {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes regsuccess-check-pop {
+  to { opacity: 1; }
+}
+
+/* ---------- Headline --------------------------------------- */
+.regsuccess-title {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.0;
+  color: #2a0808;
+  margin: 0 0 18px;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: regsuccess-fade-up 0.5s ease 0.9s forwards;
+  /* Soft text shadow for depth on the terracotta card */
+  text-shadow: 0 2px 12px rgba(92, 31, 31, 0.15);
+}
+
+/* ---------- Subtitle --------------------------------------- */
+.regsuccess-subtitle {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: #3a1515;
+  line-height: 1.6;
+  margin: 0 0 36px;
+  opacity: 0;
+  animation: regsuccess-fade-up 0.5s ease 1.05s forwards;
+}
+
+/* ---------- GO TO LOGIN button ----------------------------- */
+.regsuccess-btn {
+  display: inline-block;
+  padding: 14px 52px;
+  border-radius: 50px;
+  /* Dusty rose bleeds into deep wine — mirrors the login button */
+  background: linear-gradient(90deg, #C47070 0%, #8B3A3A 30%, #5C1F1F 65%, #5C1F1F 100%);
+  color: #fff5f3;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(92, 31, 31, 0.38);
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  opacity: 0;
+  animation: regsuccess-fade-up 0.5s ease 1.2s forwards;
+  position: relative;
+  z-index: 1;
+}
+
+.regsuccess-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(92, 31, 31, 0.48);
+}
+
+.regsuccess-btn:active {
+  transform: scale(0.97) translateY(0);
+}
+
+/* ---------- Shared fade-up keyframe ----------------------- */
+@keyframes regsuccess-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ---------- Floating terracotta sparkles ------------------ */
+.regsuccess-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 112, 112, 0.85) 0%, transparent 70%);
+  pointer-events: none;
+  animation: regsuccess-float linear infinite;
+}
+
+@keyframes regsuccess-float {
+  0%   { transform: translateY(0)       scale(1);   opacity: 0;   }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.5; }
+  100% { transform: translateY(-120px)  scale(0.4); opacity: 0;   }
+}
+
+/* ---------- Responsive ------------------------------------ */
+@media (max-width: 500px) {
+  .regsuccess-navbar { padding: 0 20px; }
+  .regsuccess-card   { padding: 40px 24px 36px; }
+  .regsuccess-title  { font-size: 40px; }
+}

@@ -1,0 +1,266 @@
+/* ============================================================
+   RegistrationFailed.css — PTag terracotta theme
+   Scoped to .regfailed-* only.
+   ============================================================ */
+
+.regfailed-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background:
+    radial-gradient(ellipse at 60% 50%, rgba(139, 58, 58, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 70%, rgba(160, 72, 72, 0.18) 0%, transparent 48%),
+    radial-gradient(ellipse at 85% 25%, rgba(196, 112, 112, 0.20) 0%, transparent 45%),
+    linear-gradient(150deg, #f0e6e2 0%, #f5edea 40%, #e8d8d4 100%);
+  background-color: #ede0dc;
+}
+
+.regfailed-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navbar */
+.regfailed-navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 68px;
+  position: relative;
+  z-index: 10;
+  background: transparent;
+}
+
+.regfailed-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.regfailed-nav-logo-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.regfailed-nav-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.regfailed-nav-logo-text .ptag-bold { color: #5C1F1F; font-weight: 800; }
+.regfailed-nav-logo-text .ptag-thin { color: #8B3A3A; font-weight: 400; }
+
+/* Body */
+.regfailed-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card */
+.regfailed-card {
+  width: 560px;
+  max-width: 92vw;
+  padding: 60px 52px 52px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg,
+    rgba(220, 170, 160, 0.72) 0%,
+    rgba(205, 145, 135, 0.62) 40%,
+    rgba(180, 115, 105, 0.52) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 210, 200, 0.50);
+  box-shadow:
+    0 30px 80px rgba(92, 31, 31, 0.28),
+    0 2px 0 rgba(255, 220, 210, 0.55) inset,
+    0 -1px 0 rgba(139, 58, 58, 0.18) inset;
+  opacity: 0;
+  transform: scale(0.82) translateY(30px);
+  animation: regfailed-card-in 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+}
+
+@keyframes regfailed-card-in {
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Status */
+.regfailed-status {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3a1010;
+  margin: 0 0 20px;
+  opacity: 0;
+  animation: regfailed-fade-up 0.5s ease 0.55s forwards;
+}
+
+/* X Icon */
+.regfailed-icon-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  opacity: 0;
+  animation: regfailed-icon-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s forwards;
+}
+
+.regfailed-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 58, 58, 0.45);
+  animation: regfailed-ripple-out 1.8s ease-out 1.2s infinite;
+}
+
+.regfailed-ripple:nth-child(2) {
+  animation-delay: 1.6s;
+}
+
+@keyframes regfailed-ripple-out {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0;   }
+}
+
+.regfailed-icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5C1F1F, #8B3A3A, #A04848);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 8px 24px rgba(92, 31, 31, 0.45),
+    0 0 0 5px rgba(139, 58, 58, 0.18);
+  position: relative;
+  z-index: 1;
+}
+
+.regfailed-xmark {
+  width: 36px;
+  height: 36px;
+  stroke: #fff5f3;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: regfailed-draw-x 0.4s ease 1.25s forwards;
+}
+
+@keyframes regfailed-draw-x {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes regfailed-icon-pop {
+  to { opacity: 1; }
+}
+
+/* Title */
+.regfailed-title {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.0;
+  color: #2a0808;
+  margin: 0 0 18px;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: regfailed-fade-up 0.5s ease 0.9s forwards;
+  text-shadow: 0 2px 12px rgba(92, 31, 31, 0.15);
+}
+
+/* Subtitle */
+.regfailed-subtitle {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  color: #3a1515;
+  line-height: 1.6;
+  margin: 0 0 36px;
+  opacity: 0;
+  animation: regfailed-fade-up 0.5s ease 1.05s forwards;
+}
+
+/* Action buttons */
+.regfailed-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: regfailed-fade-up 0.5s ease 1.2s forwards;
+}
+
+.regfailed-btn-primary {
+  display: inline-block;
+  padding: 14px 40px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #C47070 0%, #8B3A3A 30%, #5C1F1F 65%, #5C1F1F 100%);
+  color: #fff5f3;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 6px 22px rgba(92, 31, 31, 0.38);
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.regfailed-btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+.regfailed-btn-secondary {
+  display: inline-block;
+  padding: 14px 40px;
+  border-radius: 50px;
+  background: transparent;
+  color: #5C1F1F;
+  border: 2px solid rgba(92, 31, 31, 0.40);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.regfailed-btn-secondary:hover {
+  background: rgba(92, 31, 31, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Fade up */
+@keyframes regfailed-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .regfailed-navbar { padding: 0 20px; }
+  .regfailed-card   { padding: 40px 24px 36px; }
+  .regfailed-title  { font-size: 40px; }
+  .regfailed-actions { flex-direction: column; align-items: center; }
+}
