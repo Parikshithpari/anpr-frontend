@@ -4,7 +4,7 @@ import './SuperAdminDashboard.css';
 import usePageTitle from '../usePageTitle';
 import ptagLogo from '../assets/PTag.png';
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://anpr-api.gconnectt.com";
 
 const SuperAdminDashboard = ({ user }) => {
   usePageTitle("Super-Admin Dashboard");
